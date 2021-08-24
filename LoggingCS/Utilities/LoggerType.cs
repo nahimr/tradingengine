@@ -1,4 +1,4 @@
-﻿namespace TradingEngineServer.Logging
+﻿namespace TradingEngineServer.Logging.Utilities
 {
     public enum LoggerType
     {

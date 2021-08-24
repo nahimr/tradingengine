@@ -2,8 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TradingEngineServer.Logging;
 using TradingEngineServer.Logging.Configuration;
+using TradingEngineServer.Logging.Loggers;
+using TradingEngineServer.Logging.Utilities;
 using ILogger = TradingEngineServer.Logging.ILogger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 

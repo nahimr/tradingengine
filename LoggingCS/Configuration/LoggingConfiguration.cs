@@ -1,4 +1,6 @@
-﻿namespace TradingEngineServer.Logging.Configuration
+﻿using TradingEngineServer.Logging.Utilities;
+
+namespace TradingEngineServer.Logging.Configuration
 {
     public class LoggingConfiguration
     {
