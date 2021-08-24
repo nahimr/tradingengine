@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TradingEngineServer.Core;
+using HostBuilder = TradingEngineServer.Core.HostBuilder;
+using ServiceProvider = TradingEngineServer.Core.ServiceProvider;
 
-using var engine = TradingEngineServerHostBuilder.BuildTradingEngineServer();
-TradingEngineServerServiceProvider.ServiceProvider = engine.Services;
+using var engine = HostBuilder.BuildTradingEngineServer();
+ServiceProvider.IServiceProvider = engine.Services;
 {
-    using var scope = TradingEngineServerServiceProvider.ServiceProvider.CreateScope();
+    using var scope = ServiceProvider.IServiceProvider.CreateScope();
     await engine.RunAsync().ConfigureAwait(false);
 }
