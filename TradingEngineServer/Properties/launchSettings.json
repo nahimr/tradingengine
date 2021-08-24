@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "TradingEngineServer": {
+      "commandName": "Project"
+    }
+  }
+}
