@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using HostBuilder = TradingEngineServer.Core.HostBuilder;
-using ServiceProvider = TradingEngineServer.Core.ServiceProvider;
+using HostBuilder = TradingEngine.Server.Core.HostBuilder;
+using ServiceProvider = TradingEngine.Server.Core.ServiceProvider;
 
 using var engine = HostBuilder.BuildTradingEngineServer();
 ServiceProvider.IServiceProvider = engine.Services;

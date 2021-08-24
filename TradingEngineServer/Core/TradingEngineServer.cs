@@ -3,10 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using TradingEngineServer.Core.Configuration;
+using TradingEngine.Server.Core.Configuration;
 using TradingEngineServer.Logging;
 
-namespace TradingEngineServer.Core
+namespace TradingEngine.Server.Core
 {
     internal sealed class TradingEngineServer : BackgroundService, ITradingEngineServer
     {

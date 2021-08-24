@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TradingEngineServer.Core
+namespace TradingEngine.Server.Core
 {
     public static class ServiceProvider
     {

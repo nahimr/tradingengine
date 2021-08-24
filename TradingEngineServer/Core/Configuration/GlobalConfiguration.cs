@@ -1,4 +1,4 @@
-﻿namespace TradingEngineServer.Core.Configuration
+﻿namespace TradingEngine.Server.Core.Configuration
 {
     class GlobalConfiguration
     {

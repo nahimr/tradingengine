@@ -8,7 +8,7 @@ using TradingEngineServer.Logging.Utilities;
 using ILogger = TradingEngineServer.Logging.ILogger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
-namespace TradingEngineServer.Core
+namespace TradingEngine.Server.Core
 {
     public sealed class HostBuilder
     {
