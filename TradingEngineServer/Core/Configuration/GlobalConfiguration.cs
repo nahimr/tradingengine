@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TradingEngineServer.Core.Configuration
+﻿namespace TradingEngineServer.Core.Configuration
 {
     class GlobalConfiguration
     {

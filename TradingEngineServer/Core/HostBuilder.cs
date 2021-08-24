@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TradingEngineServer.Logging;
+using TradingEngineServer.Logging.Configuration;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace TradingEngineServer.Core
 {
@@ -13,9 +16,11 @@ namespace TradingEngineServer.Core
                     // Start with configuration
                     services.AddOptions();
                     services.Configure<Configuration.GlobalConfiguration>(ctx.Configuration.GetSection(nameof(Configuration.GlobalConfiguration)));
+                    services.Configure<LoggingConfiguration>(ctx.Configuration.GetSection(nameof(LoggingConfiguration)));
 
                     // Add Singleton Object
                     services.AddSingleton<ITradingEngineServer, TradingEngineServer>();
+                    services.AddSingleton<ITextLogger, TextLogger>();
                     
                     // Add Hosted Service
                     services.AddHostedService<TradingEngineServer>();
