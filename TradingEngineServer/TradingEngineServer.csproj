@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LoggingCS\LoggingCS.csproj" />
+    <ProjectReference Include="..\LoggingCS\Logging.csproj" />
   </ItemGroup>
 
   <ItemGroup>
