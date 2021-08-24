@@ -3,6 +3,7 @@
     public class LoggingConfiguration
     {
         public LoggerType LoggerType { get; set; }
+        public bool ForwardToConsole { get; set; }
         // public DatabaseLoggerConfiguration DatabaseLoggerConfiguration { get; set; }
         public TextLoggerConfiguration TextLoggerConfiguration { get; set; }
     }

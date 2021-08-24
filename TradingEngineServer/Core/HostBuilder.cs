@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TradingEngineServer.Logging;
 using TradingEngineServer.Logging.Configuration;
+using ILogger = TradingEngineServer.Logging.ILogger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace TradingEngineServer.Core
@@ -16,12 +18,30 @@ namespace TradingEngineServer.Core
                     // Start with configuration
                     services.AddOptions();
                     services.Configure<Configuration.GlobalConfiguration>(ctx.Configuration.GetSection(nameof(Configuration.GlobalConfiguration)));
-                    services.Configure<LoggingConfiguration>(ctx.Configuration.GetSection(nameof(LoggingConfiguration)));
+                    var loggingConfig = ctx.Configuration.GetSection(nameof(LoggingConfiguration));
+                    services.Configure<LoggingConfiguration>(loggingConfig);
+                    var loggerType = loggingConfig.GetValue<LoggerType>("LoggerType");
+                    var forwardToConsole = loggingConfig.GetValue<bool>("ForwardToConsole");
 
                     // Add Singleton Object
                     services.AddSingleton<ITradingEngineServer, TradingEngineServer>();
-                    services.AddSingleton<ITextLogger, TextLogger>();
-                    
+
+                    switch (loggerType)
+                    {
+                        case LoggerType.Text:
+                            services.AddSingleton<ILogger, TextLogger>();
+                            break;
+                        default:
+                            if (!forwardToConsole) break;
+                            services.AddSingleton<ILogger, ConsoleLogger>();
+                            break;
+                    }
+
+                    if (forwardToConsole)
+                    {
+                        services.AddSingleton<ILogger, ConsoleLogger>();
+                    }
+
                     // Add Hosted Service
                     services.AddHostedService<TradingEngineServer>();
 

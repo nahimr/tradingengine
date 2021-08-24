@@ -2,7 +2,7 @@
 
 namespace TradingEngineServer.Logging
 {
-    public interface ILogger
+    public interface ILogger : IDisposable
     {
         void Debug(string module, string message);
         void Debug(string module, Exception exception);

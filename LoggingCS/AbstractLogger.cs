@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
 
 namespace TradingEngineServer.Logging
 {
@@ -14,5 +15,6 @@ namespace TradingEngineServer.Logging
         public void Warning(string module, string message) => Log(LogLevel.Warning, module, message);
         public void Warning(string module, Exception exception) => Log(LogLevel.Warning, module, $"{exception}");
         protected abstract void Log(LogLevel level, string module, string message);
+        public abstract void Dispose();
     }
 }

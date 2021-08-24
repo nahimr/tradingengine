@@ -1,14 +1,16 @@
 ﻿using Microsoft.Extensions.Options;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Microsoft.Extensions.Logging;
 using TradingEngineServer.Logging.Configuration;
 
 namespace TradingEngineServer.Logging
 {
-    public class TextLogger : AbstractLogger, ITextLogger
+    public class TextLogger : AbstractLogger
     {
         private readonly LoggingConfiguration _config;
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
@@ -18,11 +20,11 @@ namespace TradingEngineServer.Logging
         public TextLogger(IOptions<LoggingConfiguration> config) : base()
         {
             _config = config.Value ?? throw new ArgumentNullException(nameof(config));
-            if (_config.LoggerType != LoggerType.Text)
+            /*if (_config.LoggerType != LoggerType.Text)
             {
                 throw new InvalidOperationException(
                     $"{nameof(TextLogger)} doesn't match LoggerType of {_config.LoggerType}");
-            }
+            }*/
 
             var now = DateTime.Now;
 
@@ -40,7 +42,7 @@ namespace TradingEngineServer.Logging
             Dispose(false);
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
@@ -87,7 +89,8 @@ namespace TradingEngineServer.Logging
 
         private static string FormatLogItem(LogInformation logItem)
         {
-            return $"[{logItem.Now:yyyy-MM-dd HH-mm-ss.fffffff}][{logItem.Module}][{logItem.ThreadName,-30}:{logItem.ThreadId:000}] [{logItem.LogLevel}] {logItem.Message.Replace("\n", "")}\n";
+            var msgRegex = Regex.Replace(logItem.Message, "(\\n|\\t)+", string.Empty);
+            return $"[{logItem.Now:yyyy-MM-dd HH-mm-ss.fffffff}][{logItem.Module}][{logItem.ThreadName,-30}:{logItem.ThreadId:000}] [{logItem.LogLevel}] {msgRegex}\n";
         }
 
         protected override void Log(LogLevel level, string module, string message)
