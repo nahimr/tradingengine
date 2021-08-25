@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Instrument\Instrument.csproj" />
     <ProjectReference Include="..\LoggingCS\Logging.csproj" />
     <ProjectReference Include="..\Logging\Logging.csproj" />
   </ItemGroup>

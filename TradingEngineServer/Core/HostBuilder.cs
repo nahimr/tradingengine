@@ -2,10 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TradingEngineServer.Logging.Configuration;
-using TradingEngineServer.Logging.Loggers;
-using TradingEngineServer.Logging.Utilities;
-using ILogger = TradingEngineServer.Logging.ILogger;
+using TradingEngine.Shared.Logging.Configuration;
+using TradingEngine.Shared.Logging.Loggers;
+using TradingEngine.Shared.Logging.Utilities;
+using ILogger = TradingEngine.Shared.Logging.ILogger;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace TradingEngine.Server.Core
