@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9</LangVersion>
-    <RootNamespace>TradingEngineServer.Logging</RootNamespace>
-    <AssemblyName>TradingEngineServer.Logging</AssemblyName>
+    <RootNamespace>TradingEngine.Shared.Logging</RootNamespace>
+    <AssemblyName>TradingEngine.Shared.Logging</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

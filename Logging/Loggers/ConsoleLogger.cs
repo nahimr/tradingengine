@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Microsoft.Extensions.Logging;
-using TradingEngineServer.Logging.Utilities;
+using TradingEngine.Shared.Logging.Utilities;
 
-namespace TradingEngineServer.Logging.Loggers
+namespace TradingEngine.Shared.Logging.Loggers
 {
     public class ConsoleLogger : AbstractLogger
     {

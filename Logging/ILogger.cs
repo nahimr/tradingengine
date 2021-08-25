@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TradingEngineServer.Logging
+namespace TradingEngine.Shared.Logging
 {
     public interface ILogger : IDisposable
     {

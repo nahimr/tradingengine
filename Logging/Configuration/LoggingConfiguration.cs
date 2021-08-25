@@ -1,6 +1,6 @@
-﻿using TradingEngineServer.Logging.Utilities;
+﻿using TradingEngine.Shared.Logging.Utilities;
 
-namespace TradingEngineServer.Logging.Configuration
+namespace TradingEngine.Shared.Logging.Configuration
 {
     public class LoggingConfiguration
     {

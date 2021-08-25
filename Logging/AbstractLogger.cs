@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace TradingEngineServer.Logging
+namespace TradingEngine.Shared.Logging
 {
     public abstract class AbstractLogger : ILogger
     {
