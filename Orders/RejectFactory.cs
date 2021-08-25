@@ -1,4 +1,7 @@
-﻿namespace TradingEngine.Shared.Orders
+﻿using TradingEngine.Shared.Orders.Enumerations;
+using TradingEngine.Shared.Orders.Types;
+
+namespace TradingEngine.Shared.Orders
 {
     public sealed class RejectFactory
     {

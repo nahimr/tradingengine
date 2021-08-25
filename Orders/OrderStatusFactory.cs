@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TradingEngine.Shared.Orders.Status;
+using TradingEngine.Shared.Orders.Types;
 
 namespace TradingEngine.Shared.Orders
 {
     public sealed class OrderStatusFactory
     {
-        public static CancelOrderStatus GenerateCancelOrderStatus(CancelOrder co)
+        public static CancelOrderStatus GenerateCancelOrderStatus(CancelOrder cancelOrder)
         {
             return new CancelOrderStatus();
         }
