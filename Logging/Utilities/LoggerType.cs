@@ -7,4 +7,7 @@
         Trace, // Not implementing
         Console,
     }
+
+    public delegate ILogger ServiceResolver(LoggerType serviceType);
+
 }

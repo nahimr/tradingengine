@@ -11,7 +11,7 @@ using TradingEngine.Shared.Logging.Utilities;
 
 namespace TradingEngine.Shared.Logging.Loggers
 {
-    public class TextLogger : AbstractLogger
+    public sealed class TextLogger : AbstractLogger
     {
         private readonly LoggingConfiguration _config;
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
@@ -21,11 +21,11 @@ namespace TradingEngine.Shared.Logging.Loggers
         public TextLogger(IOptions<LoggingConfiguration> config) : base()
         {
             _config = config.Value ?? throw new ArgumentNullException(nameof(config));
-            /*if (_config.LoggerType != LoggerType.Text)
+            if (_config.LoggerType != LoggerType.Text)
             {
                 throw new InvalidOperationException(
                     $"{nameof(TextLogger)} doesn't match LoggerType of {_config.LoggerType}");
-            }*/
+            }
 
             var now = DateTime.Now;
 
@@ -49,7 +49,7 @@ namespace TradingEngine.Shared.Logging.Loggers
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             lock (_lock)
             {
@@ -98,6 +98,14 @@ namespace TradingEngine.Shared.Logging.Loggers
         {
             _logQueue.Post(new LogInformation(level, module, message, DateTime.Now, 
                 Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.Name));
+        }
+
+        public override string ToString()
+        {
+            return "TextLoggerConfiguration:" +
+                   $"\n\tDirectory: {_config.TextLoggerConfiguration.Directory}" +
+                   $"\n\tFileName: {_config.TextLoggerConfiguration.FileName}" +
+                   $"\n\tFileExtension: {_config.TextLoggerConfiguration.FileExtension}";
         }
 
     }
