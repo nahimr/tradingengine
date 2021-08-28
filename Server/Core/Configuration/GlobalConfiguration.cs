@@ -6,7 +6,7 @@
 
         public override string ToString()
         {
-            return $"Configuration:\n\tPort: {ServerSettings.Port}";
+            return $"GlobalConfiguration:\nServerSettings:\n\tPort: {ServerSettings.Port}";
         }
     }
 

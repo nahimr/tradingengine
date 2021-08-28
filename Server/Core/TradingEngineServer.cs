@@ -22,6 +22,7 @@ namespace TradingEngine.Server.Core
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _logger.Debug(GetType().Namespace, _config.ToString());
+            _logger.Debug(GetType().Namespace, _logger.ToString());
             _logger.Information(GetType().Namespace, $"Started {nameof(TradingEngineServer)} !");
             UInt16 test = 0;
             

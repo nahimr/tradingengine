@@ -8,7 +8,7 @@ using TradingEngine.Shared.Logging.Utilities;
 
 namespace TradingEngine.Shared.Logging.Loggers
 {
-    public class ConsoleLogger : AbstractLogger
+    public sealed class ConsoleLogger : AbstractLogger
     {
         private readonly ILogger<ConsoleLogger> _logger;
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
@@ -59,7 +59,7 @@ namespace TradingEngine.Shared.Logging.Loggers
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             lock (_lock)
             {
@@ -80,6 +80,11 @@ namespace TradingEngine.Shared.Logging.Loggers
         ~ConsoleLogger()
         {
             Dispose(false);
+        }
+
+        public override string ToString()
+        {
+            return "ConsoleLogger: Enabled";
         }
     }
 }

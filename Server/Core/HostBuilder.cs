@@ -25,6 +25,7 @@ namespace TradingEngine.Server.Core
                     var forwardToConsole = loggingConfig.GetValue<bool>("ForwardToConsole");
 
                     // Add Singleton Object
+
                     services.AddSingleton<ITradingEngineServer, TradingEngineServer>();
 
                     switch (loggerType)
@@ -32,15 +33,13 @@ namespace TradingEngine.Server.Core
                         case LoggerType.Text:
                             services.AddSingleton<ILogger, TextLogger>();
                             break;
+                        case LoggerType.Database:
+                            services.AddSingleton<ILogger, DatabaseLogger>();
+                            break;
                         default:
-                            if (!forwardToConsole) break;
+                            if (forwardToConsole) break;
                             services.AddSingleton<ILogger, ConsoleLogger>();
                             break;
-                    }
-
-                    if (forwardToConsole)
-                    {
-                        services.AddSingleton<ILogger, ConsoleLogger>();
                     }
 
                     // Add Hosted Service
