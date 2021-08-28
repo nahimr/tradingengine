@@ -13,6 +13,7 @@ namespace TradingEngine.Shared.Logging.Configuration
     public class DatabaseLoggerConfiguration
     {
        public string ConnectionString { get; set; }
+       public string TableName { get; set; }
     }
 
     public class TextLoggerConfiguration

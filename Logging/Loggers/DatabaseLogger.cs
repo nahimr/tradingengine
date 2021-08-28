@@ -52,7 +52,7 @@ namespace TradingEngine.Shared.Logging.Loggers
             // Open Connection Here !
             await _connection.OpenAsync(token);
             var sqCommand = _connection.CreateCommand();
-            sqCommand.CommandText = "CREATE TABLE IF NOT EXISTS logs(" +
+            sqCommand.CommandText = $"CREATE TABLE IF NOT EXISTS {_config.DatabaseLoggerConfiguration.TableName}(" +
                                     "id INTEGER PRIMARY KEY," +
                                     "message TEXT)";
             await sqCommand.ExecuteNonQueryAsync(token);
@@ -64,7 +64,7 @@ namespace TradingEngine.Shared.Logging.Loggers
                     var logItem = await logQueue.ReceiveAsync(token).ConfigureAwait(false);
                     // Push to DB
                     var logItemQuery = _connection.CreateCommand();
-                    logItemQuery.CommandText = $"INSERT INTO logs(message) VALUES({logItem.Message})";
+                    logItemQuery.CommandText = $"INSERT INTO {_config.DatabaseLoggerConfiguration.TableName}(message) VALUES({logItem.Message})";
                     await logItemQuery.ExecuteNonQueryAsync(token);
                 }
             }
