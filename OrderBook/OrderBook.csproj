@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9</LangVersion>
+    <RootNamespace>TradingEngine.Shared.OrderBook</RootNamespace>
+    <AssemblyName>TradingEngine.Shared.OrderBook</AssemblyName>
+  </PropertyGroup>
+
+</Project>

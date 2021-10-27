@@ -1,4 +1,6 @@
-﻿namespace TradingEngine.Shared.Instrument
+﻿using System;
+
+namespace TradingEngine.Shared.Instrument
 {
     public class Security
     {
