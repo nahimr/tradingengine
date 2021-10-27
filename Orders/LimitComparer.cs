@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TradingEngine.Shared.Orders
 {
-    class BidLimitComparer : IComparer<Limit>
+    public class BidLimitComparer : IComparer<Limit>
     {
         public static IComparer<Limit> Comparer { get; } = new BidLimitComparer();
         public int Compare(Limit x, Limit y)
@@ -15,7 +15,7 @@ namespace TradingEngine.Shared.Orders
         }
     }    
     
-    class AskLimitComparer : IComparer<Limit>
+    public class AskLimitComparer : IComparer<Limit>
     {
         public static IComparer<Limit> Comparer { get; } = new AskLimitComparer();
         public int Compare(Limit x, Limit y)

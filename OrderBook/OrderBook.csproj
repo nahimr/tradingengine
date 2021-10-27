@@ -7,4 +7,9 @@
     <AssemblyName>TradingEngine.Shared.OrderBook</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Instrument\Instrument.csproj" />
+    <ProjectReference Include="..\Orders\Orders.csproj" />
+  </ItemGroup>
+
 </Project>

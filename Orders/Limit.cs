@@ -6,7 +6,7 @@ namespace TradingEngine.Shared.Orders
 {
     public class Limit
     {
-        public long Price { get; set; }
+        public long Price { get; private set; }
         public OrderbookEntry Head { get; set; }
         public OrderbookEntry Tail { get; set; }
 
@@ -21,6 +21,10 @@ namespace TradingEngine.Shared.Orders
             }
         }
 
+        public Limit(long price)
+        {
+            Price = price;
+        }
 
         public uint GetLevelOrderCount()
         {
